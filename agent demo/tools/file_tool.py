@@ -332,8 +332,8 @@ class FileTool(Tool):
         # Save history
         self._file_history[path].append("".join(lines))
 
-        # Insert the new content
-        new_lines = new_str.split("\n")
+        # Insert the new content with newline characters preserved
+        new_lines = [ln + "\n" for ln in new_str.splitlines()]
         lines[insert_line:insert_line] = new_lines
 
         with open(path, "w", encoding="utf-8") as f:
